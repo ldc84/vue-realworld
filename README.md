@@ -24,3 +24,10 @@ npm run test
 ```
 npm run lint
 ```
+
+### Style
+Ant Design
+```
+npm i ant-design-vue --save
+```
+https://vuecomponent.github.io/ant-design-vue/docs/vue/introduce/
