@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <Header />
-    <router-view></router-view>
+    <div id="body">
+      <router-view></router-view>
+    </div>
     <Footer />
   </div>
 </template>
@@ -38,5 +40,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
+}
+#body {
+  padding:100px;
 }
 </style>
