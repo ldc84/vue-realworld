@@ -42,6 +42,10 @@ body {
   color: #2c3e50;
 }
 #body {
-  padding:100px;
+  padding:2%;
+  h2 {
+    text-align:center;
+    font-weight:700;
+  }
 }
 </style>
