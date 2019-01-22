@@ -8,11 +8,15 @@ import Antd from 'ant-design-vue'
 
 import _ from 'lodash'
 
+// import { CHECK_AUTH } from "@/store/actions.type";
+import ApiService from "^@/api.service";
+
 Vue.use(Antd)
 
 Vue.config.productionTip = false
 
-Vue.prototype.$http = axios
+// Vue.prototype.$http = axios
+ApiService.init();
 
 new Vue({
   router,

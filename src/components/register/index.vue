@@ -47,6 +47,8 @@
             {
               rules: [{
                 required: true, message: 'Please input your password!',
+              }, { 
+                min:8, message: 'Please enter at least 8 characters'
               }, {
                 validator: this.validateToNextPassword,
               }],
@@ -120,17 +122,12 @@ export default {
     handleSubmit  (e) {
       e.preventDefault();
       this.form.validateFieldsAndScroll((err, values) => {
-        if (!err) {
-          const results = _.forEach(values, (value, key)=>{
-            if( key !== 'confirm'){
-              console.log(`${key}:${value}`);
-            }
-          });
-          console.log(results);
+        if(!err) {
+          console.log(values);
           this.$store.dispatch(REGISTER, {
-              email: results.username,
-              password: results.password,
-              username: results.name
+              username: values.name,
+              password: values.password,
+              email: values.email
           })
           .then(() => this.$router.push({ name: "home" }));
         }

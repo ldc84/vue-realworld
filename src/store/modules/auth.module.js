@@ -1,5 +1,5 @@
-import ApiService from "@/common/api.service"
-import JwtService from "@/common/jwt.service"
+import ApiService from "^@/api.service"
+import JwtService from "^@/jwt.service"
 import { REGISTER } from "../actions.type"
 import { SET_AUTH, SET_ERROR } from "../mutations.type"
 
@@ -27,6 +27,7 @@ const actions = {
         })
         .catch(({ response }) => {
           context.commit(SET_ERROR, response.data.errors);
+          console.log(response.data.errors)
           reject(response);
         });
     });
