@@ -124,7 +124,7 @@ export default {
     })
   },
   methods: {
-    handleSubmit  (e) {
+    handleSubmit(e) {
       e.preventDefault();
       this.form.validateFieldsAndScroll((err, values) => {
         if(!err) {
@@ -142,11 +142,11 @@ export default {
         }
       });
     },
-    handleConfirmBlur  (e) {
+    handleConfirmBlur(e) {
       const value = e.target.value;
       this.confirmDirty = this.confirmDirty || !!value;
     },
-    compareToFirstPassword  (rule, value, callback) {
+    compareToFirstPassword(rule, value, callback) {
       const form = this.form;
       if (value && value !== form.getFieldValue('password')) {
         callback('Two passwords that you enter is inconsistent!');
@@ -154,7 +154,7 @@ export default {
         callback();
       }
     },
-    validateToNextPassword  (rule, value, callback) {
+    validateToNextPassword(rule, value, callback) {
       const form = this.form;
       if (value && this.confirmDirty) {
         form.validateFields(['confirm'], { force: true });
