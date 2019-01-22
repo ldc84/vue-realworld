@@ -85,7 +85,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
 import { REGISTER } from '@/store/actions.type';
 
 export default {
@@ -117,12 +116,7 @@ export default {
         }
       }
     }
-  },
-  computed: {
-    ...mapState({
-      errors: state => state.auth.errors
-    })
-  },
+  },  
   methods: {
     handleSubmit(e) {
       e.preventDefault();
