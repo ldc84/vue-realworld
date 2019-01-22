@@ -5,6 +5,7 @@ import { SET_AUTH, SET_ERROR } from "../mutations.type"
 
 // 추후 진행 예정
 const state = {
+  error: null,
   user: {},
   isAuthenticated: !!JwtService.getToken()
 };
