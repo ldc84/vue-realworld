@@ -118,6 +118,11 @@ export default {
       }
     }
   },
+  computed: {
+    ...mapState({
+      errors: state => state.auth.errors
+    })
+  },
   methods: {
     handleSubmit  (e) {
       e.preventDefault();
@@ -129,7 +134,11 @@ export default {
               password: values.password,
               email: values.email
           })
-          .then(() => this.$router.push({ name: "home" }));
+          .then(() => this.$router.push({ name: "home" }))
+          .catch((err)=> _.mapKeys(err.data.errors, (v, k)=> {
+            this.$message.error(`${k} Error`);
+            console.log(k);
+          }));
         }
       });
     },
