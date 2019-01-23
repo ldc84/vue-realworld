@@ -4,10 +4,8 @@
     <a-form @submit="handleSubmit" :form="form">
       <a-form-item
         v-bind="formItemLayout"
+        label="Name"
       >
-        <span slot="label">
-          Name
-        </span>
         <a-input
           size="large"
           v-decorator="[
@@ -50,7 +48,7 @@
               }, { 
                 min:8, message: 'Please enter at least 8 characters'
               }, {
-                validator: this.validateToNextPassword,
+                validator: validateToNextPassword,
               }],
             }
           ]"
@@ -129,9 +127,12 @@ export default {
               email: values.email
           })
           .then(() => this.$router.push({ name: "home" }))
-          .catch((err)=> _.mapKeys(err.data.errors, (v, k)=> {
-            this.$message.error(`${k} Error`);
-            console.log(k);
+          .catch((err)=> _.forEach(err.data.errors, (v, k)=> {
+            if(v.length > 0) {
+              this.$message.error(`${k} Error`);
+              document.getElementById(k).focus();
+              return false;
+            }
           }));
         }
       });
