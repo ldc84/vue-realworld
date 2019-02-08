@@ -126,7 +126,10 @@ export default {
               password: values.password,
               email: values.email
           })
-          .then(() => this.$router.push({ name: "home" }))
+          .then(() => {
+            this.$router.push({ name: "home" });
+            this.$message.success('Resister Success');
+          })
           .catch((err)=> _.forEach(err.data.errors, (v, k)=> {
             if(v.length > 0) {
               this.$message.error(`${k} Error`);

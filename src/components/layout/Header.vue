@@ -29,11 +29,15 @@
           {{ currentUser.username }}
         </router-link>
       </a-menu-item>
+      <a-menu-item key="menu-5" v-if="isAuthenticated" @click="logout">
+        Logout
+      </a-menu-item>
     </a-menu>
   </div>
 </template>
 <script>
 import { mapGetters } from 'vuex';
+import { LOGOUT } from '@/store/actions.type'
 
 export default {
   data(){
@@ -46,6 +50,14 @@ export default {
       "currentUser", 
       "isAuthenticated"
     ])
+  },
+  methods: {
+    logout() {
+      this.$store.dispatch(LOGOUT).then(()=> {
+        this.$router.push({ name: "home" });
+        this.$message.success('Logout Success');
+      })
+    }
   }
 }
 </script>
