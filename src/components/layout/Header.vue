@@ -23,7 +23,7 @@
         <router-link 
           :to="{ 
             name : 'profile',
-            path : { name: currentUser.username }
+            params : { name: currentUser.username }
           }"
         >
           {{ currentUser.username }}
